@@ -10,10 +10,23 @@ describe("An Airport", function() {
     plane = jasmine.createSpy('plane');
   });
 
+  beforeEach(function() {
+    plane2 = jasmine.createSpy('plane');
+  });
+
   describe("When a plane lands", function() {
     it("Pushes plane into dock array", function() {
       airPort.landPlane(plane)
       expect(airPort.dock).toContain(plane);
+    });
+  });
+
+  describe("When cap is full", function(){
+    it("Doesnt dock plane", function(){
+      airPort.landPlane(plane)
+      airPort.landPlane(plane2)
+      
+      expect(airPort.dock.length).toBe(1); 
     });
   });
 
@@ -23,5 +36,7 @@ describe("An Airport", function() {
       expect(airPort.dock).not.toContain(plane);
     });
   });
+
+
 
 });

@@ -35,10 +35,15 @@ object              | messages
 traffic_controller  |
                     |
 
-airport             | Constructed:
+airport             | Constructed:(maxCap = 10)
                         - docked = []
+                        - this.maxCap = maxCap
+
                     | .land_plane(Plane.new)
-                        - docked << Plane.new
-                      .take_off(Plane.new)
+                        - if docked.length = this.maxCap
+                        - docked << Plane.new unless docked.length === this.maxCap
+
+                    | .take_off(Plane.new)
                         - docked.delete(plane)
                         dock.splice( dock.indexOf('plane2'), 1 );
+deceide MAX CAP 
