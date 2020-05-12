@@ -3,7 +3,11 @@ class AirPort {
     this.dock = [];
   }
 
-  landPlane(plane){ 
+  landPlane(plane){
     return this.dock.push(plane);
+  }
+
+  takeOff(plane) {
+    return this.dock.splice( this.dock.indexOf(plane), 1 );
   }
 }

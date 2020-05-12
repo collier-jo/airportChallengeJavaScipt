@@ -1,6 +1,6 @@
 describe("An Airport", function() {
 
-  var airPort; 
+  var airPort;
 
   beforeEach(function () {
     airPort = new AirPort();
@@ -16,4 +16,12 @@ describe("An Airport", function() {
       expect(airPort.dock).toContain(plane);
     });
   });
+
+  describe("When a plane takes off", function () {
+    it("Deletes plane from dock array", function () {
+      airPort.takeOff(plane)
+      expect(airPort.dock).not.toContain(plane);
+    });
+  });
+
 });
