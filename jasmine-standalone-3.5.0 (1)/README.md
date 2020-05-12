@@ -35,15 +35,42 @@ object              | messages
 traffic_controller  |
                     |
 
+weather             | self.weatherChecker
+                        - rand(1..100)
+                          if >= 80 return Stormy
+                          else return Sunny
+
 airport             | Constructed:(maxCap = 10)
                         - docked = []
                         - this.maxCap = maxCap
+                        - this.weather = Weather
 
                     | .land_plane(Plane.new)
                         - if docked.length = this.maxCap
                         - docked << Plane.new unless docked.length === this.maxCap
 
                     | .take_off(Plane.new)
+                        - if weather === stormy and plane is still dock
+                        - if stormy?
                         - docked.delete(plane)
                         dock.splice( dock.indexOf('plane2'), 1 );
-deceide MAX CAP 
+
+                      .stormy?
+                          - this.weather.weather_check === 'stormy'
+                                  - sunny === stormy
+                          Weather.weatherChecker
+                            => Sunny
+                            => Stormy
+
+                        Draft testing for weather mock
+                            var mock_weather, weather_checker = null;
+
+                            mock_weather = {
+                              weather_checker(value): function() {
+                                return value;
+                              }
+                            };
+
+                            spyOn(mock_weather, 'weather_checker')
+                              mock_weather.weather_checker("Stormy");
+                            });  
