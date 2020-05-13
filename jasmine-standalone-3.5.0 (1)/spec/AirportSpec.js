@@ -1,16 +1,13 @@
 "use strict";
 
-
 describe("An Airport", function() {
 
   var airPort;
+  var plane;
 
   beforeEach(function () {
     airPort = new AirPort();
-  });
-
-  beforeEach(function() {
-    var plane = jasmine.createSpy('plane');
+    plane = jasmine.createSpy('plane');
   });
 
   describe("When a plane lands", function() {
