@@ -31,12 +31,41 @@ describe("An Airport", function() {
   });
 
   describe("When a plane takes off", function () {
+    beforeEach(function(){
+      spyOn(airPort, 'isStormy').and.returnValue(false);
+   });    
+   
     it("Deletes plane from dock array", function () {
+      airPort.landPlane(plane)    
       airPort.takeOff(plane)
       expect(airPort.dock).not.toContain(plane);
+      
+    });
+  });
+
+  describe("Stormy", function(){
+    beforeEach(function(){
+      spyOn(airPort, 'isStormy').and.returnValue(false);
+   });
+    it("Returns false", function(){
+      expect(airPort.isStormy()).toEqual(false);
     });
   });
 
 
+  // WE ARE TESTING WHEN STROMY === TRUE > PLANE DOESNT TAKE OFF 
 
+  describe("When weather is stormy", function() { 
+
+       beforeEach(function(){
+         spyOn(airPort, 'isStormy').and.returnValue(true);
+      });
+
+      it("Keeps plane in array", function() {
+      airPort.landPlane(plane)
+      airPort.takeOff(plane)
+      expect(airPort.dock).toContain(plane);
+    });
+  });
 });
+

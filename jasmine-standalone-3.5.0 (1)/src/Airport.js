@@ -2,6 +2,7 @@ class AirPort {
   constructor(maxCap = 1){
     this.dock = [];
     this.maxCap = maxCap;
+
   }
 
   landPlane(plane){
@@ -14,6 +15,15 @@ class AirPort {
   }
 
   takeOff(plane) {
-    return this.dock.splice( this.dock.indexOf(plane), 1 );
+    if(this.isStormy() === true){
+      return "Cannot take off!!"
+    }
+    else{
+      return this.dock.splice( this.dock.indexOf(plane), 1 );
+    }
   }
+
+  isStormy() {
+    return true;
+  }  
 }

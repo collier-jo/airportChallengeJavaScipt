@@ -55,12 +55,19 @@ airport             | Constructed:(maxCap = 10)
                         - docked.delete(plane)
                         dock.splice( dock.indexOf('plane2'), 1 );
 
-                      .stormy?
+                      ._Isstormy
                           - this.weather.weather_check === 'stormy'
-                                  - sunny === stormy
-                          Weather.weatherChecker
-                            => Sunny
-                            => Stormy
+
+                          stormy === stormy - true - no take off
+                          false == take off 
+                        
+
+- when weather - stormy 
+- plane is still in array ?
+- it returns - "NO !" > Raise error???
+
+
+
 
                         Draft testing for weather mock
                             var mock_weather, weather_checker = null;
@@ -74,3 +81,5 @@ airport             | Constructed:(maxCap = 10)
                             spyOn(mock_weather, 'weather_checker')
                               mock_weather.weather_checker("Stormy");
                             });  
+
+
