@@ -7,7 +7,7 @@ describe("An Airport", function() {
 
   beforeEach(function () {
     airPort = new AirPort();
-    plane = jasmine.createSpy('plane');
+    plane = jasmine.createSpy('plane')
   });
 
   describe("When a plane lands", function() {
@@ -26,14 +26,10 @@ describe("An Airport", function() {
       expect(airPort.dock.length).toBe(1); 
     });
   });
-  
 
   describe("When a plane takes off", function () {
-    beforeEach(function(){
-      spyOn(airPort, 'isStormy').and.returnValue(false);
-   });    
-
     it("Deletes plane from dock array", function () {
+      spyOn(Math, 'random').and.returnValue(0.05);
       airPort.landPlane(plane)    
       airPort.takeOff(plane)
       expect(airPort.dock).not.toContain(plane);
@@ -43,7 +39,7 @@ describe("An Airport", function() {
 
   describe("Random number/ weather generator", function(){
     it("Above 90 returns true (i.e. Stormy) ", function(){
-      spyOn(Math, 'random').and.returnValue(99);
+      spyOn(Math, 'random').and.returnValue(0.99);
       console.log(airPort.isStormy());
       expect(airPort.isStormy()).toEqual(true);  
     });
@@ -58,9 +54,6 @@ describe("An Airport", function() {
     });
   });
 
-
-// If rand number is out of range of 99 and then this test was work 
-
   describe("Stormy", function(){
     beforeEach(function(){
       spyOn(airPort, 'isStormy').and.returnValue(false);
@@ -69,9 +62,6 @@ describe("An Airport", function() {
       expect(airPort.isStormy()).toEqual(false);
     });
   });
-
-
-  // WE ARE TESTING WHEN STROMY === TRUE > PLANE DOESNT TAKE OFF 
 
   describe("When weather is stormy", function() { 
 

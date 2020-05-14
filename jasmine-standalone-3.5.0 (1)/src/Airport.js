@@ -11,8 +11,8 @@ class AirPort {
     else {
       return this.dock.push(plane);
     }
-  }
-
+  } 
+  
   takeOff(plane) {
     if(this.isStormy() === true){
       return "Cannot take off!!";
